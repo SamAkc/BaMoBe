@@ -1,0 +1,208 @@
+<div id="bilanzen">
+
+    <div id="content">
+        <div id="summaries">
+            <mat-card id="routes">
+                <mat-card-title>Strecken auswählen</mat-card-title>
+                <form class="example-section" [formGroup]="routesFormGroup" (ngSubmit)="submitRoutes()">
+                    <p>
+                        <mat-checkbox [(ngModel)]="routeOne" formControlName="routeOne">Strecke 1</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="routeTwo" formControlName="routeTwo">Strecke 2</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="routeThree" formControlName="routeThree">Strecke 3</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="routeFour" formControlName="routeFour">Strecke 4</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="routeFive" formControlName="routeFive">Strecke 5</mat-checkbox>
+                    </p>
+                    <button mat-flat-button type="submit">Bestätigen</button>
+                </form>
+            </mat-card>
+
+            <mat-card id="summs">
+                <mat-card-title>Bilanzen auswählen</mat-card-title>
+
+                <form class="example-section" [formGroup]="summariesFormGroup" (ngSubmit)="submitSummaries()">
+                    <p>
+                        <mat-checkbox [(ngModel)]="carbon" formControlName="carbonmonoxide">CO2</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="costs" formControlName="costs">Kosten</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="time" formControlName="time">Zeit</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="distance" formControlName="distance">Entfernung</mat-checkbox>
+                    </p>
+                    <p>
+                        <mat-checkbox [(ngModel)]="calories" formControlName="calories">Kalorienverbrauch
+                        </mat-checkbox>
+                    </p>
+                    <button mat-flat-button type="submit">Bestätigen</button>
+                </form>
+            </mat-card>
+        </div>
+
+        <div id="table">
+            <mat-card>
+                <mat-card-title>Streckenübersicht</mat-card-title>
+
+                <table mat-table [dataSource]="routesToBeDisplayed">
+
+                    <!-- Strecken Column -->
+                    <ng-container matColumnDef="strecken">
+                        <th mat-header-cell *matHeaderCellDef> Strecken </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                    </ng-container>
+
+                    <!-- Transportmittel Column -->
+                    <ng-container matColumnDef="transportmittel">
+                        <th mat-header-cell *matHeaderCellDef> Transportmittel </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.transport }} </td>
+                    </ng-container>
+
+                    <!-- Anzahl Column -->
+                    <ng-container matColumnDef="anzahl">
+                        <th mat-header-cell *matHeaderCellDef> Häufigkeit <br><span>pro Woche</span></th>
+                        <td mat-cell *matCellDef="let element"> {{ element.frequency }} </td>
+                    </ng-container>
+
+                    <!-- CO2 Column -->
+                    <ng-container matColumnDef="cO2" *ngIf="displayCarbonmonoxide">
+                        <th mat-header-cell *matHeaderCellDef> CO2 <br><span>in kg</span></th>
+                        <td mat-cell *matCellDef="let element"> {{ element.carbonmonoxide }} </td>
+                    </ng-container>
+
+                    <!-- Kosten Column -->
+                    <ng-container matColumnDef="kosten">
+                        <th mat-header-cell *matHeaderCellDef> Kosten <br><span>in €</span> </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.costs }} </td>
+                    </ng-container>
+
+                    <!-- Zeit Column -->
+                    <ng-container matColumnDef="zeit">
+                        <th mat-header-cell *matHeaderCellDef> Zeit <br><span>in Minuten</span></th>
+                        <td mat-cell *matCellDef="let element"> {{ element.time }} </td>
+                    </ng-container>
+
+                    <!-- Entfernung Column -->
+                    <ng-container matColumnDef="entfernung">
+                        <th mat-header-cell *matHeaderCellDef> Entfernung <br><span>in km</span></th>
+                        <td mat-cell *matCellDef="let element"> {{ element.distance }} </td>
+                    </ng-container>
+
+                    <!-- Kalorienverbrauch Column -->
+                    <ng-container matColumnDef="kalorienverbrauch">
+                        <th mat-header-cell *matHeaderCellDef> Kalorienverbrauch <br><span>in kcal</span></th>
+                        <td mat-cell *matCellDef="let element"> {{ element.calories }} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+
+                <mat-form-field *ngIf="displayTimeSelector">
+                    <mat-label>Zeitraum auswählen</mat-label>
+                    <mat-select [(value)]="selectedTime" (selectionChange)="optionChanged()">
+                        <mat-option id="daily" name="Daily" value="Täglich">Täglich</mat-option>
+                        <mat-option id="weekly" name="Weekly" value="Wöchentlich">Wöchentlich</mat-option>
+                        <mat-option id="monthly" name="Monthly" value="Monatlich">Monatlich</mat-option>
+                        <mat-option id="yearly" name="Yearly" value="Jährlich">Jährlich</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+                    <mat-tab label="Tipps">
+                        <div class="totalTipps">
+                            <div>
+                                <p class="bold">CO2-Ausgleich</p>
+                                <p class="spacing-bottom"><span>Pflanze</span></p>
+                                <h3 class="spacing-bottom">350
+                                    <fa-icon [icon]="faTree" size="2x"></fa-icon>
+                                </h3>
+                                <p class="spacing-top"><span>pro Jahr</span></p>
+                                <p><span>*Annahme: 1 Baum bindet 15,7 kg CO2 jährlich</span></p>
+                            </div>
+                            <div>
+                                <p class="bold">Nutzervergleich</p>
+                                <fa-icon [icon]="faUserFriends" size="2x"></fa-icon>
+                                <p class="spacing-bottom"><span>Du verursachst pro Jahr</span></p>
+                                <p class="spacing-bottom spacing-top bold">weniger C02 als<br>80% der registrierten Nutzer.</p>
+                                <p class="spacing-top"><span>Weiter so!</span></p>
+                                <!-- <p><span>Im Durchschnitt stößt du pro Strecke<br> ca. 1095kg CO2 jährlich aus.</span></p> -->
+                            </div>
+                            <div>
+                                <p class="bold">Finde einen Zeus</p>
+                                <p>Und herrsche über<br> deinen C02-Ausstoß!</p>
+                                <fa-icon [icon]="faBoltLightning" size="2x"></fa-icon>
+                                <p class="spacing-bottom"><a href="https://zeusscooters.com/de/" target="_blank">Hier</a> findest du Informationen <br>zu E-Scootern in Bamberg.</p>
+                            </div>
+                            <div>
+                                <p class="bold">Mit den Stadtbussen<br> durch Bamberg</p>
+                                <fa-icon [icon]="faBus" size="2x"></fa-icon>
+                                <p class="spacing-bottom">Finde <a href="https://www.stadtwerke-bamberg.de/mobilitaet/busfahren/" target="_blank">hier</a> die passende Route.</p>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Gesamtbilanzen">
+
+                        <p *ngIf="!displayTable">Bitte Bilanzen und Zeitraum auswählen.</p>
+
+                        <div class="totalSummaries">
+                            <div class="outer" *ngIf="displayCarbonmonoxide">
+                                <div class="inner">
+                                    <fa-icon [icon]="faLeaf" size="2x"></fa-icon>
+                                    <p class="bold">CO2<br><span>in kg</span></p>
+                                    <h3>
+                                        {{totalCarbonmonoxide | number : '2.1-3'}}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="outer" *ngIf="displayCosts">
+                                <div class="inner">
+                                    <fa-icon [icon]="faMoneyBill" size="2x"></fa-icon>
+                                    <p class="bold">Kosten<br><span>in €</span></p>
+                                    <h3>{{ totalCosts | number : '2.1-3' }}</h3>
+                                </div>
+                            </div>
+
+                            <div class="outer" *ngIf="displayTime">
+                                <div class="inner">
+                                    <fa-icon [icon]="faClock" size="2x"></fa-icon>
+                                    <p class="bold">Zeit<br><span>in Minuten</span></p>
+                                    <h3>{{ totalTime | number : '2.1-3' }}</h3>
+                                </div>
+                            </div>
+
+                            <div class="outer" *ngIf="displayDistance">
+                                <div class="inner">
+                                    <fa-icon [icon]="faRoute" size="2x"></fa-icon>
+                                    <p class="bold">Distanz<br><span>in km</span></p>
+                                    <h3>{{ totalDistance | number : '2.1-3' }}</h3>
+                                </div>
+                            </div>
+
+                            <div class="outer" *ngIf="displayCalories">
+                                <div class="inner">
+                                    <fa-icon [icon]="faFireFlameCurved" size="2x"></fa-icon>
+                                    <p class="bold">Kalorien<br><span>in kcal</span></p>
+                                    <h3>{{ totalCalories | number : '2.1-3' }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

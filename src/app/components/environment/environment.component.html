@@ -1,0 +1,31 @@
+<div id="umgebung">
+    <mat-form-field class="address-field" appearance="fill">
+        <mat-label>Adresse suchen</mat-label>
+        <input matInput>
+        <button matSuffix mat-icon-button aria-label="Location">
+            <fa-icon [icon]="faLocation"></fa-icon>
+        </button>
+        <mat-divider [inset]="true"></mat-divider>
+        <button matSuffix mat-icon-button aria-label="Search">
+            <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        </button>
+    </mat-form-field>
+    <div id="bubbles">
+        <mat-button-toggle-group class="mat-buttons" name="locationType" multiple>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faShoppingBag"></fa-icon> Supermärkte</mat-button-toggle>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faUtensils"></fa-icon> Restaurants</mat-button-toggle>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faBus"></fa-icon> Bushaltestellen</mat-button-toggle>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faCar"></fa-icon> CarSharing</mat-button-toggle>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faBolt"></fa-icon> E-Scooter</mat-button-toggle>
+            <mat-button-toggle mat-flat-button type="submit"><fa-icon [icon]="faBolt"></fa-icon> E-Bikes</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div id="cards">
+        <mat-card>Der nächste <b>Supermarkt</b> ist <b>300m</b> entfernt</mat-card>
+        <mat-card>Das nächste <b>Restaurant</b> ist <b>650m</b> entfernt</mat-card>
+        <mat-card>Der nächste <b>CarSharing-Platz</b> ist <b>200m</b> entfernt</mat-card>
+        <mat-card>Die nächste <b>Bushaltestelle</b> ist <b>100m</b> entfernt</mat-card>
+        <mat-card>Der nächste <b>E-Scooter</b> ist <b>900m</b> entfernt</mat-card>
+        <mat-card>Das nächste <b>E-Fahrrad</b> ist <b>1.2km</b> entfernt</mat-card>
+    </div>
+</div>

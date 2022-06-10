@@ -1,0 +1,19 @@
+<div id="login">
+    <h1>Anmelden</h1>
+    <mat-form-field id="username">
+        <mat-label>Ihr Benutzername</mat-label>
+        <input matInput required />
+    </mat-form-field>
+    <mat-form-field id="password">
+        <mat-label>Ihr Passwort</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    </mat-form-field>
+    <div id="buttons">
+        <button routerLink="/summaries" id="skipbutton" mat-flat-button color="disabled">Überspringen</button>
+        <button routerLink="/register" id="registerbutton" mat-flat-button color="primary">Registrieren</button>
+        <button id="signinbutton" mat-flat-button color="primary">Anmelden</button>
+    </div>
+</div>

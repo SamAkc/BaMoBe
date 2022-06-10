@@ -1,0 +1,82 @@
+<div id="register">
+
+    <h1>Registrieren</h1>
+
+    <mat-form-field>
+        <mat-label>Vorname</mat-label>
+        <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Benutzername</mat-label>
+        <input matInput required />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Ihre E-Mail Adresse</mat-label>
+        <input matInput required />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Ihr Passwort</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-checkbox [color]="task.color" ng-model="checked">
+        Fahrzeug zu Hause?
+    </mat-checkbox>
+
+    <h2>Fahrzeuge anlegen</h2>
+
+    <mat-form-field>
+        <mat-label>Bezeichnung</mat-label>
+        <input matInput placeholder="z. B.: Fahrzeug-Typ oder Kennzeichen" required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Art des Fahrzeugs</mat-label>
+        <mat-select>
+            <mat-option value="kleinwagen">Kleinwagen mit Verbrennungsmotor</mat-option>
+            <mat-option value="mittelklasse">Mittelklasse mit Verbrennungsmotor</mat-option>
+            <mat-option value="oberklasse">Oberklasse mit Verbrennungsmotor</mat-option>
+            <mat-option value="hybrid">Plug-In Hybrid Kfz (PHEV)</mat-option>
+            <mat-option value="elektro">Elektrofahrzeug (BEV)</mat-option>
+            <mat-option value="motorrad">Motorrad</mat-option>
+            <mat-option value="roller">Roller / Mofa mit Verbrennungsmotor</mat-option>
+            <mat-option value="elektroroller">Elektroroller</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Alter des Fahrzeugs</mat-label>
+        <mat-select>
+            <mat-option value="to3">bis 3 Jahre</mat-option>
+            <mat-option value="4to6">4-6 Jahre</mat-option>
+            <mat-option value="7to10">7-10 Jahre</mat-option>
+            <mat-option value="11to15">11-15 Jahre</mat-option>
+            <mat-option value="16to29">16-29 Jahre</mat-option>
+            <mat-option value="oldtimer">Oldtimer</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Durchschnittsverbrauch</mat-label>
+        <input matInput type="number" min="1" />
+        <span id="consumption" matSuffix>Liter, kWh oder kg/100 km</span>
+    </mat-form-field>
+
+    <button id="addcar" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+      <mat-icon>control_point</mat-icon>
+    </button>
+
+    <div id="buttons">
+        <button routerLink="/summaries" id="skipbutton" mat-flat-button color="disabled">Überspringen</button>
+        <button id="registerbutton" mat-flat-button color="primary">Registrieren</button>
+        <button routerLink="/login" id="signinbutton" mat-flat-button color="primary">Login</button>
+    </div>
+</div>

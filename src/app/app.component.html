@@ -1,0 +1,8 @@
+<!-- Header -->
+<app-slim-header *ngIf="slimHeader"></app-slim-header>
+<app-header *ngIf="!slimHeader"></app-header>
+
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<app-footer *ngIf="footer"></app-footer>

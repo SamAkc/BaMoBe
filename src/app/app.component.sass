@@ -1,0 +1,562 @@
+/* MIXINS */
+@mixin mb-button($background-color: $mb-blue, $hover: $mb-light-blue, $color: white, $font-size: 14px)
+  font-family: 'Open Sans', sans-serif
+  background-color: $background-color
+  color: $color
+  font-size: $font-size
+  font-weight: 300
+  height: 40px
+  &:hover
+    background-color: $hover
+
+@mixin headline($size: 45px, $color: white)
+  font-family: 'Rubik', sans-serif
+  font-size: $size
+  color: $color
+
+@mixin paragraph($size: 14px, $color: white)
+  font-family: 'Open Sans', sans-serif
+  font-size: $size
+  color: $color
+  font-weight: 300
+
+@mixin top-left($top: 0, $left: 0)
+  top: $top
+  left: $left
+
+@mixin center()
+  margin-top: 11%
+  margin-left: auto
+  margin-right: auto
+
+/* COLOR STYLES */
+$mb-blue: #004494
+$mb-light-blue: #0085cb
+$mb-gradient: linear-gradient(45deg, #e31f32, #622180, #0085cb)
+$mb-grey: #848e96
+$mb-light-grey: #0000000A
+$mb-dark-grey: #3d3d3d
+$mb-red: #d41f3a
+
+p, a, span
+  @include paragraph(14px, $mb-dark-grey)
+
+.mat-option-text
+  font-weight: 300
+
+/* NAVIGATION */
+nav
+  position: absolute
+  z-index: 4
+  @include top-left(50%, 15%)
+  width: 80%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+  a
+    @include paragraph(16px)
+    padding-right: 20px
+    text-decoration: none
+    padding: 20px
+
+    &:hover
+      font-weight: bold
+      text-decoration: underline
+      text-underline-offset: 10px
+
+    &:active
+      font-weight: bold
+      text-decoration: underline
+      text-underline-offset: 10px
+
+    &:focus
+      font-weight: bold
+      text-decoration: underline
+      text-underline-offset: 10px
+
+    fa-icon
+      color: white
+      left: 100%
+      position: absolute
+
+      &:hover
+        transform: scale(1.2)
+
+/* END NAVIGATION */
+
+/* HEADER */
+#header
+  .polygon
+    top: 0px
+
+    svg
+      z-index: 2
+      position: absolute
+      @include top-left()
+
+  .logo
+    z-index: 3
+    left: 55px
+    top: 40px
+    position: absolute
+    transition: all .2s
+
+    &:hover
+      transform: scale(1.1)
+
+    img
+      height: 240px
+/* END HEADER */
+
+/* SLIM HEADER */
+#slim-header
+  .background
+    height: 80px
+    z-index: 2
+    position: absolute
+    top: 0
+    left: 0
+    background-color: $mb-blue
+    width: 100%
+    box-shadow: 0px 2px 10px 5px rgb(0 0 0 / 20%)
+
+  .logo
+    z-index: 3
+    left: 40px
+    top: 20px
+    position: absolute
+    transition: all .2s
+
+    &:hover
+      transform: scale(1.1)
+
+    img
+      height: 120px
+/* END SLIM HEADER */
+
+/* FOOTER */
+#footer
+  .background
+    position: fixed
+    bottom: 0
+    left: 0
+    background: $mb-gradient
+    width: 100%
+    height: 50px
+
+    p
+      color: #ffffff
+      position: absolute
+      right: 20px
+/* END FOOTER */
+
+/* START PAGE */
+#start
+  top: 0
+  left: 0
+  position: absolute
+  background: $mb-gradient
+  background-size: cover
+  height: 100%
+  width: 100%
+
+  .content
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    position: absolute
+
+    h1
+      @include headline(40px)
+
+    button
+      @include mb-button()
+
+  footer
+    .background
+      position: fixed
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 50px
+
+      p
+        color: #ffffff
+        position: absolute
+        right: 20px
+/* END START PAGE */
+
+/* LOGIN PAGE */
+#login
+  @include center()
+  width: 50%
+
+  h1
+    @include headline()
+    margin-bottom: 50px
+    background: $mb-gradient
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+  mat-form-field
+    display: inline
+
+    mat-label, input
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: 300
+
+    mat-icon
+      color: $mb-dark-grey
+
+  #skipbutton
+    @include mb-button($mb-grey, $mb-dark-grey)
+    margin: auto
+    float: left
+
+  #signinbutton
+    @include mb-button()
+    margin: auto
+    float: right
+
+  #registerbutton
+    @include mb-button()
+    margin: auto
+    float: left
+    margin-left: 15px
+/* END LOGIN PAGE */
+
+/* REGISTER PAGE */
+#register
+  @include center()
+  width: 50%
+  margin-bottom: 10%
+
+  h1
+    @include headline()
+    margin-bottom: 50px
+    background: $mb-gradient
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+  h2
+    @include headline(25px, $mb-dark-grey)
+
+  mat-form-field
+    display: inline
+
+    mat-label, input
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: 300
+
+    mat-icon
+      color: $mb-dark-grey
+
+    #consumption
+      @include paragraph(14px, white)
+      font-weight: 300
+      background-color: $mb-dark-grey
+
+  mat-checkbox
+    @include paragraph(14px, $mb-dark-grey)
+    font-weight: 300
+
+  #addcar
+    margin-bottom: 30px
+    box-shadow: none
+    width: 30px
+    height: 30px
+    background-color: $mb-blue
+
+    mat-icon
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    position: absolute
+    font-weight: 300
+
+  #buttons
+    margin-bottom: 80px
+
+    #skipbutton
+      @include mb-button($mb-grey, $mb-dark-grey)
+      margin: auto
+      float: left
+
+    #registerbutton
+      @include mb-button()
+      margin: auto
+      float: right
+
+    #signinbutton
+      @include mb-button()
+      margin: auto
+      float: left
+      margin-left: 15px
+/* END REGISTER PAGE */
+
+/* SUMMARIES PAGE */
+#bilanzen
+  background-image: url("../assets/map.png")
+  height: 100%
+  width: 100%
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  top: 0
+  left: 0
+  position: absolute
+
+  fa-icon
+  color: white
+
+  .spacing-bottom
+    margin-bottom: 5px
+  .spacing-top
+    margin-top: 0px
+  .bold
+    font-weight: bold !important
+    font-size: 16px !important
+  .line-height
+    line-height: 1px
+
+  #content
+    @include center()
+    width: 95%
+
+    #summaries
+      width: 19%
+      float: left
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: 300
+
+      button
+        @include mb-button()
+        margin-top: 20px
+
+      #routes
+        margin-bottom: 20px
+        height: 295px
+      #summs
+        height: 295px
+
+    #table
+      width: 79%
+      float: right
+      color: $mb-dark-grey
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: 300
+
+      table
+        width: 100%
+        margin-bottom: 30px
+
+        .mat-column-strecken
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 500
+          width: 12%
+
+        .mat-column-transportmittel
+          width: 12%
+
+        .mat-column-cO2
+          width: 12%
+
+        .mat-column-kosten
+          width: 12%
+
+        .mat-column-zeit
+          width: 12%
+
+        .mat-column-entfernung
+          width: 12%
+
+        .mat-column-kalorienverbrauch
+          width: 12%
+
+        th
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 500
+
+          span
+            @include paragraph(12px, $mb-dark-grey)
+
+      h1
+        @include headline(25px, $mb-dark-grey)
+        font-weight: 500
+        margin-top: 35px
+        float: left
+        margin-right: 20px
+
+      mat-card
+        min-height: 600px
+
+      mat-form-field
+        position: absolute
+        z-index: 1000
+        right: 16px
+        width: 330px
+        bottom: 35%
+
+        mat-label
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 300
+
+        mat-select
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 300
+
+        mat-option-text
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 300
+
+    mat-card-title
+        @include headline(25px, $mb-dark-grey)
+
+  .totalSummaries
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    .outer
+      float: left
+      height: 210px
+      text-align: center
+      background: $mb-gradient
+      border-radius: 10px
+      white-space: nowrap
+      width: 100%
+      position: relative
+
+    .inner
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+    .outer:not(:last-child)
+      margin-right: 20px
+
+    p, a
+      @include paragraph(16px, white)
+
+      span
+        @include paragraph(12px, white)
+
+    h3
+      @include headline(25px, white)
+      margin-top: 0
+      margin-bottom: 0
+
+  .totalTipps
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    div
+      float: left
+      height: 210px
+      text-align: center
+      background: $mb-gradient
+      border-radius: 10px
+      white-space: nowrap
+      width: 100%
+      position: relative
+
+    div:not(:last-child)
+      margin-right: 20px
+
+    p, a
+      @include paragraph(16px, white)
+
+      span
+        @include paragraph(12px, white)
+
+    h3
+      @include headline(25px, white)
+      margin-top: 0
+
+/* END SUMMARIES PAGE */
+
+/* FEEDBACK PAGE */
+#feedback
+  @include center()
+  width: 70%
+
+  h1
+    @include headline()
+    margin-bottom: 50px
+    background: $mb-gradient
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+  .first
+    margin-bottom: 20px
+
+  mat-card
+    background-color: $mb-light-grey
+    width: 80%
+    @include paragraph(16px, $mb-dark-grey)
+
+    span
+      font-weight: bold
+
+    mat-checkbox
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: bold
+
+    button
+      @include mb-button()
+      margin-top: 30px
+
+/* END FEEDBACK PAGE */
+
+/* ENVIRONMENT PAGE */
+
+#umgebung
+  width: 100%
+  background-image: url("../assets/map_zoomed.png")
+  height: 73%
+  background-position: center
+  /*background-repeat: no-repeat
+  background-size: cover
+  top: 0
+  left: 0
+  position: absolute
+
+  .address-field
+    width: 80%
+    margin-left: 15%
+    margin-top: 5%
+    margin-bottom: 0.5%
+    input-color: white
+    background-color: white
+    height: 9%
+    font-family: 'Open Sans', sans-serif
+    text-align: left
+
+  #bubbles
+    margin-left: 15%
+
+    mat-button-toggle
+      width: 155px
+      height: 50px
+      margin-right: 1%
+      border-radius: 30px
+      display: inline-block
+      text-align: center
+      font-family: 'Open Sans', sans-serif
+  
+  #cards
+    margin-top: 30%
+    margin-left: 2%
+    
+    mat-card
+      height: 125px
+      width: 150px
+      margin-right: 5%
+      display: inline-block
+      text-align: center
+      font-family: 'Open Sans', sans-serif
+      box-shadow: 1px 1px 18px
+
+
+/* END ENVIRONMENT PAGE */
