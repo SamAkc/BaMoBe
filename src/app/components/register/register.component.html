@@ -2,29 +2,29 @@
 
     <h1>Registrieren</h1>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Vorname</mat-label>
         <input matInput />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Benutzername</mat-label>
         <input matInput required />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Ihre E-Mail Adresse</mat-label>
         <input matInput required />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Ihr Passwort</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" required />
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
+        	<mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+     	</button>
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="isChecked">
@@ -34,12 +34,12 @@
     <div class="vehicle" *ngIf="isChecked">
         <h2>Fahrzeuge anlegen</h2>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Bezeichnung</mat-label>
             <input matInput placeholder="z. B.: Fahrzeug-Typ oder Kennzeichen" required />
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Art des Fahrzeugs</mat-label>
             <mat-select>
                 <mat-option value="kleinwagen">Kleinwagen mit Verbrennungsmotor</mat-option>
@@ -53,7 +53,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Alter des Fahrzeugs</mat-label>
             <mat-select>
                 <mat-option value="to3">bis 3 Jahre</mat-option>
@@ -65,7 +65,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>Durchschnittsverbrauch</mat-label>
             <input matInput type="number" min="1" />
             <span matSuffix>Liter, kWh oder kg/100 km</span>

@@ -1,8 +1,13 @@
 <div id="umgebung">
     <div id="content">
-        <mat-form-field class="address-field" appearance="fill">
+        <div class="background"></div>
+        <mat-form-field class="address-field" appearance="outline">
             <mat-label>Adresse suchen</mat-label>
-            <input matInput>
+            <input matInput type="text">
+            <span class="suffix" matSuffix>
+					<mat-icon>near_me</mat-icon>
+					<mat-icon class="last-suffix">my_location</mat-icon>
+				</span>
         </mat-form-field>
         <div id="bubbles">
             <mat-button-toggle-group class="mat-buttons" name="locationType" multiple>

@@ -1,18 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SummaryService } from 'src/app/services/summaries/summary.service';
 import { Route } from '../../model/route';
 import { RouteService } from './../../services/routes/route.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
-import { faTree } from '@fortawesome/free-solid-svg-icons';
-import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
-import { faBoltLightning } from '@fortawesome/free-solid-svg-icons';
-import { faBus } from '@fortawesome/free-solid-svg-icons';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
-import { faRoute } from '@fortawesome/free-solid-svg-icons';
-import { faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
+import { faTree, faUserFriends, faBoltLightning, faBus, faClock, faMoneyBill, faRoute, faFireFlameCurved} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-summaries',
   templateUrl: './summaries.component.html',
@@ -69,7 +61,7 @@ export class SummariesComponent implements OnInit {
   selectedTime: string = 'Wöchentlich';
   displayTimeSelector = false;
 
-  constructor(private routeService: RouteService, private summaryService: SummaryService, fb: FormBuilder) {
+  constructor(private routeService: RouteService, fb: FormBuilder) {
     this.summariesFormGroup = fb.group({
       carbonmonoxide: true,
       costs: true,

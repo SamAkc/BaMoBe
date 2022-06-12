@@ -512,14 +512,28 @@ nav
     @include center(100px)
     width: 75%
 
+    .background
+      width: 75%
+      height: 51px
+      border-radius: 5px
+      background: white
+      position: absolute
+      top: 104px
+
     .address-field
-      margin-bottom: 0.5%
-      width: 100%
-      background-color: white
       @include paragraph(14px, $mb-dark-grey)
       font-weight: 300
+      width: 100%
+
+      .suffix
+        mat-icon
+          display: inline
+        
+        .last-suffix
+          margin-left: 10px !important
 
     #bubbles
+      margin-top: -10px
       mat-button-toggle-group
         border: none
 

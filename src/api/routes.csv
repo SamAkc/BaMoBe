@@ -1,6 +1,0 @@
-id,name,transport,frequency,luggage,co2,costs,time,distance,calories
-1,Arbeit,Auto,10,yes,150,5,30,6,0
-2,Supermarkt,Fahrrad,4,yes,0,0,120,2,200
-3,Sport1,E-Scooter,6,no,5,30,200,6,50
-4,Stadt,Bus,1,no,300,0,40,10,10
-5,Sport2,E-Bike,8,no,0,0,30,10,10

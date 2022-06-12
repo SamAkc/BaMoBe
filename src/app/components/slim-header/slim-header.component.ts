@@ -7,12 +7,10 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./slim-header.component.sass', '../../app.component.sass']
 })
 export class SlimHeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  faUser = faUser;
-
+	/* Icon */
+	faUser = faUser;
+	
+	constructor() { }
+	
+	ngOnInit(): void {}
 }
