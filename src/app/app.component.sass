@@ -24,8 +24,8 @@
   top: $top
   left: $left
 
-@mixin center()
-  margin-top: 11%
+@mixin center($margin-top: 11%)
+  margin-top: $margin-top
   margin-left: auto
   margin-right: auto
 
@@ -252,28 +252,14 @@ nav
     mat-icon
       color: $mb-dark-grey
 
-    #consumption
-      @include paragraph(14px, white)
-      font-weight: 300
-      background-color: $mb-dark-grey
-
   mat-checkbox
     @include paragraph(14px, $mb-dark-grey)
     font-weight: 300
-
-  #addcar
     margin-bottom: 30px
-    box-shadow: none
-    width: 30px
-    height: 30px
-    background-color: $mb-blue
 
-    mat-icon
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    position: absolute
-    font-weight: 300
+  mat-icon
+    color: $mb-dark-grey
+    margin-bottom: 20px
 
   #buttons
     margin-bottom: 80px
@@ -308,7 +294,7 @@ nav
   position: absolute
 
   fa-icon
-  color: white
+    color: white
 
   .spacing-bottom
     margin-bottom: 5px
@@ -512,51 +498,73 @@ nav
 /* ENVIRONMENT PAGE */
 
 #umgebung
-  width: 100%
   background-image: url("../assets/map_zoomed.png")
-  height: 73%
+  height: 100%
+  width: 100%
   background-position: center
-  /*background-repeat: no-repeat
+  background-repeat: no-repeat
   background-size: cover
   top: 0
   left: 0
   position: absolute
 
-  .address-field
-    width: 80%
-    margin-left: 15%
-    margin-top: 5%
-    margin-bottom: 0.5%
-    input-color: white
-    background-color: white
-    height: 9%
-    font-family: 'Open Sans', sans-serif
-    text-align: left
+  #content
+    @include center(100px)
+    width: 75%
 
-  #bubbles
-    margin-left: 15%
+    .address-field
+      margin-bottom: 0.5%
+      width: 100%
+      background-color: white
+      @include paragraph(14px, $mb-dark-grey)
+      font-weight: 300
 
-    mat-button-toggle
-      width: 155px
-      height: 50px
-      margin-right: 1%
-      border-radius: 30px
-      display: inline-block
-      text-align: center
-      font-family: 'Open Sans', sans-serif
-  
-  #cards
-    margin-top: 30%
-    margin-left: 2%
-    
-    mat-card
-      height: 125px
-      width: 150px
-      margin-right: 5%
-      display: inline-block
-      text-align: center
-      font-family: 'Open Sans', sans-serif
-      box-shadow: 1px 1px 18px
+    #bubbles
+      mat-button-toggle-group
+        border: none
 
+        mat-button-toggle
+          width: 155px
+          height: 50px
+          margin-right: 1%
+          border-radius: 30px
+          display: inline-block
+          text-align: center
+          @include paragraph(14px, $mb-dark-grey)
+          font-weight: 300
 
+          fa-icon
+            padding-right: 8px
+
+  mat-card
+    position: absolute
+    width: calc(100% - 30px)
+    bottom: 50px
+    left: 0
+
+    .envCards
+      display: flex
+      justify-content: space-between
+      .outer
+        float: left
+        height: 210px
+        text-align: center
+        background: white
+        box-shadow: 5px 5px 5px silver
+        border-radius: 10px
+        white-space: nowrap
+        width: 100%
+        position: relative
+
+      .inner
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+
+      .outer:not(:last-child)
+        margin-right: 20px
+
+      p
+        @include paragraph(14px, $mb-dark-grey)
 /* END ENVIRONMENT PAGE */
