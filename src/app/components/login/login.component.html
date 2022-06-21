@@ -1,11 +1,11 @@
 <div id="login">
     <h1>Anmelden</h1>
     <mat-form-field id="username" appearance="outline">
-        <mat-label>Ihr Benutzername</mat-label>
+        <mat-label>Dein Benutzername</mat-label>
         <input matInput required />
     </mat-form-field>
     <mat-form-field id="password" appearance="outline">
-        <mat-label>Ihr Passwort</mat-label>
+        <mat-label>Dein Passwort</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" required />
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       		<mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
